@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" src="/static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>添加页面</title>
+</head>
+<body>
+
+<h3 align="center">信息界面</h3>
+<form action="/user/addTo" th:action="@{/user/addTo}" method="post">
+<table border="1" width="800px" align="center">
+    <tr align="center">
+        <td>用户名:</td>
+        <td><input type="text" name="uname"></input></td>
+    </tr>
+    <tr align="center">
+        <td>密码:</td>
+        <td><input type="password" name="upass"></input></td>
+    </tr>
+    <tr align="center">
+        <td>姓名:</td>
+        <td><input type="text" name="name"></input></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">
+            <input type="submit" value="提交"></input>
+        </td>
+    </tr>
+
+</table>
+</form>
+</body>
+<script type="text/javascript" >
+    window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
+        // 判断是否按下F12，F12键码为123
+        if (event.keyCode == 123) {
+            alert('请尊重劳动成果！');
+            event.preventDefault(); // 阻止默认事件行为
+            window.event.returnValue = false;
+        }
+    }
+    document.oncontextmenu = new Function("return false;");
+
+
+</script>
+</html>

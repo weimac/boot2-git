@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" src="/static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表页面</title>
+</head>
+<body>
+
+<table border="1" width="800px" align="center">
+    <tr>
+        <td>编号</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>姓名</td>
+        <td>状态</td>
+        <td>操作</td>
+    </tr>
+
+    <tr th:each="u:${listUser}">
+        <td th:text="${uStat.count}">编号</td>
+        <td th:text="${u.uname}">用户名</td>
+        <td th:text="${u.upass}">密码</td>
+        <td th:text="${u.name}">姓名</td>
+        <td th:switch="${u.status}">
+            <span th:case="1">有效</span>
+            <span th:case="2">其他</span>
+            <span th:case="3">会员</span>
+            <span th:case="*">未知</span>
+<!--            <span th:if="${u.status == 1}">有效</span>-->
+<!--            <span th:unless="${u.status == 1}">其他</span>-->
+            </td>
+        <td>
+            <a href="/user/add.html" th:href="@{/user/add}">添加</a> |
+            <a href="javascript:del(${u.id})" th:href="@{|javascript:del(${u.id})|}">删除</a> |
+            <a href="/user/view/?id=${u.id}" th:href="@{|/user/view/${u.id}|}">修改</a> |
+            <a href="/user/view/?id=${u.id}" th:href="@{|/user/view/${u.id}|}">查询</a> </td>
+    </tr>
+
+</table>
+<span th:if="${name eq 'lisi'}">
+    打印当前的姓名是lisi
+</span>
+<span th:unless="${name eq 'lisi'}">
+    打印哈哈哈
+
+</span>
+
+</body>
+<script type="text/javascript">
+    function del(id) {
+
+        //alert(id);
+        if(confirm("确定要删除数据吗？"))
+        {
+            $.ajax({
+                type:"post",
+                url:"[[@{/user/delete}]]",
+                data:{"id":id},
+                success:function (data) {
+                    if(data=="1"){
+
+                        window.location.href="[[@{/user/userList}]]";
+
+                    }
+
+                }
+
+            }
+            )
+
+        }
+        
+    }
+
+</script>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>aaa</title>
+</head>
+<body>
+<h1>a.html页面</h1>
+
+<h3>相对路径</h3>
+<a href="index">相对路径:index.html页面 </a>
+<h3>绝对路径</h3>
+<a href="/index">绝对路径:index.html页面 </a>
+<h3>URL表达式th:href</h3>
+<a href="/index" th:href="@{/index}">绝对路径:index.html页面 </a>
+</body>
+</html>

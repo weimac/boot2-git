@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Templates</title>
+</head>
+<body>
+<h1>Template index.html 我的主页面</h1>
+
+<p th:text="${msg}">你的数据显示位置</p>
+
+<h2>标准变量表达式</h2>
+<p th:text="${user.name}">姓名</p>
+<p th:text="${user.uname}">用户名</p>
+
+<a href="">${user.name}</a>
+<h2>选择变量表达式</h2>
+<div th:object="${user}">
+    <p th:text="*{name}">姓名</p>
+    <p th:text="*{uname}">用户名</p>
+</div>
+
+<h2>为转义文本示例:</h2>
+<p th:text="${msg1}">1</p>
+<p th:utext="${msg1}">1</p>
+<p th:utext="${msg2}">2</p>
+
+<h2>字符串拼接示例:</h2>
+<p th:text="'我的拼接'+${msg}"></p>
+<p th:text="'我的拼接'+${msg}+'加油'"></p>
+
+<p th:text="|更简单${msg}直接|"></p>
+
+<h2>路径联系</h2>
+<pre>
+    绝对路径:
+    相对路径:
+</pre>
+<h3>相对路径</h3>
+<a href="demo/a">相对路径:a.html页面 </a><br>
+<a href="b">相对路径:b.html页面 </a>
+
+<h3>绝对路径</h3>
+<a href="/demo/a">绝对路径:a.html页面 </a><br>
+<a href="/b">绝对路径:b.html页面 </a>
+
+<h3>URL表达式th:href</h3>
+<a href="/demo/a" th:href="@{/demo/a}">绝对路径:a.html页面 </a><br>
+<a href="/b" th:href="@{/b}"> 绝对路径:b.html页面 </a>
+
+
+<H3>行内编写</H3>
+
+<p> HELLO,这是[[${msg}]]</p>
+</body>
+</html>
